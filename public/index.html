@@ -11,15 +11,29 @@
 </head>
 
 <body>
-    <h1>Leave your comment for this website!</h1>
+
+    <div class="waveWrapper waveAnimation">
+        <div class="waveWrapperInner bgTop">
+            <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+        </div>
+        <div class="waveWrapperInner bgMiddle">
+            <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+        </div>
+        <div class="waveWrapperInner bgBottom">
+            <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+        </div>
+    </div>
+
+    <h1>Bottles!</h1>
     <form id="commentForm" action="">
-        <div class="effect-1">
+    <!--      <div class="effect-1">
             <label for="name">Name: </label><input class="effect-2" type="text" id="name" placeholder="e.g. Mike">
             <span class="focus-border"></span>
         </div>
         <br>
+    -->
         <div class="effect-1">
-            <label for="comment">Comment: </label><input class="effect-2" type="text" id="comment" placeholder="e.g. I love it!">
+            <label for="comment">Write whatever you want!</label>: </label><input class="effect-2" type="text" id="comment" placeholder="e.g. I love it!">
             <span class="focus-border"></span>
         </div>
         <br>
@@ -27,13 +41,17 @@
     <br>
     <div id="buttons">
         <button id="postComment">Post Comment</button>
-        <button id="getComments">Get Comments</button>
-        <button id="deleteComments">Delete All</button>
+        <br><br>
+        <button id="getComments">This is the bottle!</button>
+    <!--<button id="deleteComments">Delete All</button>
         <button id="query">Find all the posts by this user</button>
+    -->
     </div>
     <div id="json"></div>
     <div id="done"></div>
     <div id="comments"></div>
+
+
 </body>
 
 </html>

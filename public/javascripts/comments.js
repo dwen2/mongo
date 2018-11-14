@@ -20,13 +20,15 @@ $(document).ready(function() {
   $("#getComments").click(function() {
     $.getJSON('comment', function(data) {
       console.log(data);
-      var everything = "<ul>";
+    /*  var everything = "<ul>";
       for (var comment in data) {
         var com = data[comment];
         everything += "<li> Name: " + com.Name + " -- Comment: " + com.Comment + "</li>";
       }
       everything += "</ul>";
-      $("#comments").html(everything);
+    */
+      var rand = data[Math.floor(Math.random() * data.length)].Comment;
+      $("#comments").html(rand);
     })
   })
 
