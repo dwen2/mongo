@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Comments!</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="javascripts/comments.js"></script>
+</head>
+
+<body>
+    <h1>Leave your comment for this website!</h1>
+    <form id="commentForm" action="">
+        <div class="effect-1">
+            <label for="name">Name: </label><input class="effect-2" type="text" id="name" placeholder="e.g. Mike">
+            <span class="focus-border"></span>
+        </div>
+        <br>
+        <div class="effect-1">
+            <label for="comment">Comment: </label><input class="effect-2" type="text" id="comment" placeholder="e.g. I love it!">
+            <span class="focus-border"></span>
+        </div>
+        <br>
+    </form>
+    <br>
+    <div id="buttons">
+        <button id="postComment">Post Comment</button>
+        <button id="getComments">Get Comments</button>
+        <button id="deleteComments">Delete All</button>
+        <button id="query">Find all the posts by this user</button>
+    </div>
+    <div id="json"></div>
+    <div id="done"></div>
+    <div id="comments"></div>
+</body>
+
+</html>

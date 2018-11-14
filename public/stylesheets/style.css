@@ -1,0 +1,91 @@
+body,
+html {
+    background-color: white;
+    text-align: center; 
+    font-family: 'Handlee', cursive;
+}
+
+h1 {
+    color: #4CAF50;
+}
+
+ul {
+    list-style-type: none;
+}
+
+input {
+    font: 15px/24px 'Handlee', cursive;
+    color: #333;
+    margin-top: 8%;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+button,
+input:focus {
+    outline: none !important;
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 1% 2%;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family: 'Handlee', cursive;
+}
+
+button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.effect-1 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 27.33%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    position: relative;
+    color: #4CAF50;
+}
+
+.effect-2 {
+    border: 0;
+    padding: 2px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.effect-2~.focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #4caf50;
+    transition: 0.4s;
+}
+
+.effect-2:focus~.focus-border {
+    width: 100%;
+    transition: 0.4s;
+    left: 0;
+}
+
+li {
+    margin-top: 1%;
+    font-family: 'Handlee', cursive;
+}
