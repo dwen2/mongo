@@ -12,6 +12,7 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8",
       success: function(data, textStatus) {
         $("#done").html(textStatus);
+        $("#comment").val("");
       }
     })
   });
@@ -56,5 +57,5 @@ $(document).ready(function() {
     $("#comments").html(everything);
     })
   });
-
+  
 });

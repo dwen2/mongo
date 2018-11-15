@@ -1,3 +1,13 @@
+@font-face {
+    font-family: MontserratL;
+    src: url("fonts/Montserrat-Light.otf") format("opentype");
+}
+
+@font-face {
+    font-family: MontserratB;
+    src: url("fonts/Montserrat-Bold.otf") format("opentype");
+}
+
 html,
 body {
     height: 100%;
@@ -6,8 +16,8 @@ body {
 }
 
 body {
-  background:radial-gradient(ellipse at center, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #B7E8EB 100%);
-  overflow: hidden;
+    background: radial-gradient(ellipse at center, rgba(255, 254, 234, 1) 0%, rgba(255, 254, 234, 1) 35%, #B7E8EB 100%);
+    overflow: hidden;
 }
 
 @keyframes move_wave {
@@ -21,6 +31,88 @@ body {
         transform: translateX(-50%) translateZ(0) scaleY(1)
     }
 }
+
+.bottle {
+    position: absolute;
+    bottom: 15%;
+    z-index: 8;
+    opacity: 0.8;
+    height: 100px;
+    width: 100px;
+    transition: transform 2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.clicker {
+    position: absolute;
+    bottom: 15%;
+    z-index: 16;
+    background: red;
+    width: 100px;
+    height: 100px;
+    transition: transform 2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    cursor: pointer;
+    opacity: 0;
+}
+#close,#close2 {
+    right:1vw;
+    top:1vw;
+    position:absolute;
+    width:2.5vw;
+    height:2.5vw;
+    text-align:center;
+    border-radius:5vw;
+    opacity:0.5;
+    
+    background:#3D9DA9;
+    z-index:20;
+    transition:0.2s;
+    cursor:pointer;
+}
+#close:hover,#close2:hover{
+    opacity:1;
+    width:3vw;
+    height:3vw;
+    top:0.8vw;
+    right:0.8vw;
+    
+}
+#close:hover > #x, #close2:hover > #x2 {
+    line-height:3vw;
+    font-size:2vw;
+    
+}
+#x, #x2 {
+    display: block;
+    right:0;
+    top:0;
+    position: relative;
+    font-family: MontserratB;
+    color: white;
+    font-size: 1.8vw;
+    line-height:2.5vw;
+    transition:0.2s;
+    cursor:pointer;
+    
+}
+
+.rb,.wb {
+    position: relative;
+    left: -50%;
+    top: 8vh;
+    max-height: 65vh;
+    max-width: 45vw;
+    text-align: center;
+    background: #D1EADF;
+    opacity: 1;
+    border-radius: 3vw;
+    padding: 1.8vw;
+    padding-top: 2vw;
+    transition:0.3s;
+    z-index: 0;
+    opacity:0;
+}
+
+
 .waveWrapper {
     overflow: hidden;
     position: absolute;
@@ -28,9 +120,10 @@ body {
     right: 0;
     bottom: 0;
     margin: auto;
-    top:500px;
-    max-height:100px;
+    top: 0;
+    max-height: 800px;
 }
+
 .waveWrapperInner {
     position: absolute;
     width: 100%;
@@ -39,17 +132,21 @@ body {
     bottom: -1px;
     /*background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);*/
 }
+
 .bgTop {
     z-index: 15;
     opacity: 0.5;
 }
+
 .bgMiddle {
     z-index: 10;
     opacity: 0.75;
 }
+
 .bgBottom {
     z-index: 5;
 }
+
 .wave {
     position: absolute;
     left: 0;
@@ -59,30 +156,43 @@ body {
     background-position: 0 bottom;
     transform-origin: center bottom;
 }
+
 .waveTop {
-    background-size: 50% 100px;
+    background-size: 50% 200px;
 }
+
 .waveAnimation .waveTop {
-  animation: move-wave 3s;
-   -webkit-animation: move-wave 3s;
-   -webkit-animation-delay: 1s;
-   animation-delay: 1s;
+    animation: move-wave 3s;
+    -webkit-animation: move-wave 3s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
 }
+
 .waveMiddle {
-    background-size: 50% 120px;
+    background-size: 50% 220px;
 }
+
 .waveAnimation .waveMiddle {
     animation: move_wave 10s linear infinite;
 }
+
 .waveBottom {
-    background-size: 50% 100px;
+    background-size: 50% 200px;
 }
+
 .waveAnimation .waveBottom {
     animation: move_wave 15s linear infinite;
 }
 
 h1 {
-    color: #4CAF50;
+    font-size: 2.5vw;
+    color: white;
+}
+
+h2 {
+    font-size: 5vw;
+    color: #3D9DA9;
+    margin-top:-0.1vw;
 }
 
 ul {
@@ -91,23 +201,24 @@ ul {
 
 input {
     font: 15px/24px 'Handlee', cursive;
+    font-size:2vw;
     color: #333;
     margin-top: 8%;
     width: 100%;
     box-sizing: border-box;
     letter-spacing: 1px;
+    text-align:center;
+    transition:0.3s;
 }
 
 button,
 input:focus {
     outline: none !important;
+    font-size:2.5vw;
 }
 
 button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 16px 32px;
+    padding: 1vw 1.2vw;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -116,27 +227,25 @@ button {
     transition-duration: 0.4s;
     cursor: pointer;
     font-family: 'Handlee', cursive;
-}
-
-button {
     background-color: white;
     color: black;
-    border: 2px solid #4CAF50;
+    border: 2px solid #3D9DA9;
+    border-radius:0.5vw;
 }
 
 button:hover {
-    background-color: #4CAF50;
+    background-color: #3D9DA9;
     color: white;
 }
 
 .effect-1 {
     margin-left: auto;
     margin-right: auto;
-    width: 27.33%;
+    width: 60.33%;
     margin-top: 2%;
     margin-bottom: 2%;
     position: relative;
-    color: #4CAF50;
+    color: #3D9DA9;
 }
 
 .effect-2 {
@@ -151,7 +260,7 @@ button:hover {
     left: 50%;
     width: 0;
     height: 2px;
-    background-color: #4caf50;
+    background-color: #3D9DA9;
     transition: 0.4s;
 }
 
@@ -164,4 +273,15 @@ button:hover {
 li {
     margin-top: 1%;
     font-family: 'Handlee', cursive;
+}
+
+#title {
+    left:-50%;
+    position:relative;
+    font-size:10vw;
+    color:white;
+    text-shadow: 2px 3px #bedbd3;
+    margin-top:20vh;
+    opacity:0;
+    transition:1.3s;
 }

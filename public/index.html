@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Comments!</title>
+    <title>Drift Bottles</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
@@ -11,47 +11,186 @@
 </head>
 
 <body>
+    <div style="position:absolute;left:50%;width:100%">
+        <div id="title">Drift Bottles</div>
+    </div>
+    <div class="waveWrapper waveAnimation" id="container">
 
-    <div class="waveWrapper waveAnimation">
         <div class="waveWrapperInner bgTop">
-            <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+            <div class="wave waveTop" style="background-image: url('top.png')"></div>
         </div>
         <div class="waveWrapperInner bgMiddle">
-            <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+            <div class="wave waveMiddle" style="background-image: url('mid.png')"></div>
         </div>
+
         <div class="waveWrapperInner bgBottom">
-            <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+            <div class="wave waveBottom" style="background-image: url('bot.png')"></div>
         </div>
     </div>
+    <div style="position: absolute; left: 50%;">
 
-    <h1>Bottles!</h1>
-    <form id="commentForm" action="">
-    <!--      <div class="effect-1">
-            <label for="name">Name: </label><input class="effect-2" type="text" id="name" placeholder="e.g. Mike">
-            <span class="focus-border"></span>
+        <div class="rb" id="rb">
+            <div id="close" onclick="closeBox()">
+                <span id="x">X<span>
+            </div>
+            <h1>This message bottle says:</h1>
+            <h2 id="comments">Welcome to Drift Bottles!</h2>
         </div>
-        <br>
-    -->
-        <div class="effect-1">
-            <label for="comment">Write whatever you want!</label>: </label><input class="effect-2" type="text" id="comment" placeholder="e.g. I love it!">
-            <span class="focus-border"></span>
-        </div>
-        <br>
-    </form>
-    <br>
-    <div id="buttons">
-        <button id="postComment">Post Comment</button>
-        <br><br>
-        <button id="getComments">This is the bottle!</button>
-    <!--<button id="deleteComments">Delete All</button>
-        <button id="query">Find all the posts by this user</button>
-    -->
     </div>
-    <div id="json"></div>
-    <div id="done"></div>
-    <div id="comments"></div>
+    
+    <div style="position: absolute; left: 50%;">
 
-
+        <div class="wb" id="wb">
+            <div id="close2" onclick="closeBox()">
+                <span id="x2">X<span>
+            </div>
+            <h1>This one is empty <br>Write a secret message</h1>
+            <form id="commentForm" action="">
+                <div class="effect-1">
+                <input class="effect-2" type="text" id="comment" placeholder="e.g. I love it!">
+                <span class="focus-border"></span>
+            </div>
+            <br>
+            </form>
+            <button id="postComment" onclick="closeBox()">Send Bottle</button>
+        </div>
+    </div>
 </body>
+
+<script>
+    var odds = 0;
+    var message = true;
+    var num = 0;
+    window.onload = function() {
+        setTimeout(function() {
+            document.getElementById("title").style.opacity = 1;
+        }, 2000);
+        setTimeout(function() {
+            document.getElementById("title").style.opacity = 0;
+            float();
+            loop();
+        }, 6000);
+
+    }
+
+    function loop() {
+        var rand = 12000 * Math.random() + 500;
+        setTimeout(function() {
+            if (num < 5) {
+                float();
+            }
+            loop();
+        }, rand);
+
+    }
+
+    function float() {
+        num++;
+        var over = false;
+        odds++;
+        if (odds == 2 && Math.random() < 0.5) { // 1/2 chance of dropping an empty bottle after 2 message bottles
+            message = false;
+            odds = 0;
+        }
+        if (odds == 3 && Math.random() < 0.5) { // 1/2 chance of dropping an empty bottle after 3 message bottles
+            message = false;
+            odds = 0;
+        }
+        if (odds > 4) { //definetly one empty bottle after 4 message bottles
+            message = false;
+            odds = 0;
+        }
+        var img = document.createElement('img');
+        var clicker = document.createElement('div');
+        clicker.className = "clicker";
+        if (message) {
+            img.src = 'bottle.png';
+            clicker.onclick = read;
+            //clicker.id = "getComments";
+        }
+        else {
+            img.src = 'empty.png';
+            clicker.onclick = write;
+            message = true;
+        }
+        document.getElementById('container').appendChild(img);
+        document.getElementById('container').appendChild(clicker);
+        img.className = "bottle";
+        img.style.left = "110vw";
+        clicker.style.left = "110vw";
+        var pos = 110;
+        var y = 0;
+        var up = true;
+        var steady = true;
+        var period = 0;
+        timer = setInterval(function() { // timer to move element slowly
+            pos -= 0.1;
+            img.style.left = pos + "vw";
+            clicker.style.left = pos + "vw";
+            if (pos < -10 && !over) {
+                clearInterval();
+                img.parentNode.removeChild(img);
+                clicker.parentNode.removeChild(clicker);
+                over = true;
+                num--;
+            }
+
+        }, 17);
+        img.style.transform = "translateY(-" + 2 + "vh)";
+        clicker.style.transform = "translateY(-" + 2 + "vh)";
+        setTimeout(function() {
+            img.style.transform = "translateY(" + 2 + "vh)";
+            clicker.style.transform = "translateY(" + 2 + "vh)";
+        }, 2000);
+        up = setInterval(function() {
+
+            img.style.transform = "translateY(-" + 2 + "vh)";
+            clicker.style.transform = "translateY(-" + 2 + "vh)";
+        }, 4000);
+        setTimeout(function() {
+            down = setInterval(function() {
+
+                img.style.transform = "translateY(" + 2 + "vh)";
+                clicker.style.transform = "translateY(" + 2 + "vh)";
+            }, 4000);
+        }, 2000);
+    }
+
+    function read() {
+        document.getElementById("wb").style.opacity = 0;
+        document.getElementById("rb").style.opacity = 0;
+        document.getElementById("wb").style.zIndex = 0;
+
+        document.getElementById("comments").style.opacity = 0;
+        $.getJSON('comment', function(data) {
+            var rand = data[Math.floor(Math.random() * data.length)].Comment;
+            $("#comments").html(rand);
+        })
+        setTimeout(function() {
+            document.getElementById("rb").style.opacity = 1;
+            document.getElementById("comments").style.opacity = 1;
+            document.getElementById("rb").style.zIndex = 16;
+        }, 200);
+
+    }
+
+    function write() {
+        document.getElementById("rb").style.opacity = 0;
+        document.getElementById("rb").style.zIndex = 0;
+        document.getElementById("wb").style.opacity = 0;
+        setTimeout(function() {
+            document.getElementById("wb").style.opacity = 1;
+            document.getElementById("wb").style.zIndex = 16;
+        }, 200);
+    }
+
+    function closeBox() {
+        document.getElementById("rb").style.opacity = 0;
+        document.getElementById("wb").style.opacity = 0;
+        document.getElementById("rb").style.zIndex = 0;
+        document.getElementById("wb").style.zIndex = 0;
+
+    }
+</script>
 
 </html>
